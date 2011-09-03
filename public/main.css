@@ -1,0 +1,23 @@
+
+root { 
+    display: block;
+}
+
+.wrapper {
+    width: 70%;
+    margin: 40px auto;
+}
+
+table.conf{
+    width: 70%;
+}
+
+table.conf thead th{
+    text-align: left;
+    padding: 4px;
+}
+
+table.conf tbody tr td{
+    text-align: left;
+    padding: 2px;
+} 

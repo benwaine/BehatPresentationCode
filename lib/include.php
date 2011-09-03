@@ -7,6 +7,10 @@ $dLoader->register();
 $dcLoader = new \Doctrine\Common\ClassLoader('Doctrine\Common', __DIR__ . '/Vendor/doctrine2-dbal/lib/vendor/doctrine-common/lib');
 $dcLoader->register();
 
+
+$phpConLoader = new \Doctrine\Common\ClassLoader('PHPCon', __DIR__ . '/');
+$phpConLoader->register();
+
 $dbPath = __DIR__ . '/../data/data.db';
 
 $params = array(
@@ -17,3 +21,10 @@ $params = array(
 );
 
 $con = \Doctrine\DBAL\DriverManager::getConnection($params);
+
+
+$confMapper  = new \PHPCon\Conference\Mapper($con);
+$confService = new \PHPCon\Conference\Service($confMapper);
+
+
+
