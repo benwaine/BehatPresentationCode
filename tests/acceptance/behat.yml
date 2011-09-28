@@ -2,6 +2,7 @@ default:
   context:
     class: 'FeatureContext'
     parameters:
+      base_url: http://behatdemo.dev/
       database:
         username: 'root'
         password: 'root'

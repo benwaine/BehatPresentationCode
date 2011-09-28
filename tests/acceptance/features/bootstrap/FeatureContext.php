@@ -52,6 +52,8 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
+        $this->useContext('subcontext_alias', new UIContext($parameters));
+        
         $path = __DIR__ . '/' . $parameters['database']['dbPath'];
         
         $params = array(

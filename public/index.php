@@ -7,12 +7,15 @@ require_once '../lib/header.php';
 ?>
 <div class="wrapper">
 <h1>PHPCon</h1>
-
+<div class="conf-search">
+	<label for="search-text">Search: </label>
+	<input id="search-text" type="text" />
+</div>
 <?php if ($conferences): ?>
 
     <p>Here are some upcoming conferences: </p>
 
-    <table class="conf">
+    <table class="conferences">
 
         <thead>
             <tr>
@@ -42,4 +45,6 @@ require_once '../lib/header.php';
 </div>
 
 <?php require_once '../lib/footer.php'; ?>
+
+
 
