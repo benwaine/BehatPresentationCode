@@ -8,17 +8,13 @@ class Service
     
     public function __construct($mapper) 
     {
-        
+        $this->mapper = $mapper;
     }
     
-    public function create()
+    public function findSessions($conferenceId)
     {
-        
-    }
-    
-    public function findSessions()
-    {
-        
+        // Use the mapper to find all conference sessions.
+        return array();
     }
 
     

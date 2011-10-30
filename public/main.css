@@ -4,20 +4,22 @@ root {
 }
 
 .wrapper {
-    width: 70%;
+    width: 60%;
     margin: 40px auto;
 }
 
-table.conf{
+
+
+table.conferences{
     width: 70%;
 }
 
-table.conf thead th{
+table.conferences thead th{
     text-align: left;
     padding: 4px;
 }
 
-table.conf tbody tr td{
+table.conferences tbody tr td{
     text-align: left;
     padding: 2px;
 } 

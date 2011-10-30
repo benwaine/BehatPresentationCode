@@ -31,7 +31,7 @@ require_once '../lib/header.php';
                 <td><?php echo $conf->getName() ?></td>
                 <td><?php echo $conf->getDescription() ?></td>
                 <td><?php echo $conf->getDate()->format('d/m/Y') ?></td>
-                <td><a href="#">Info</a></td>
+                <td><a href="/conference.php?id=<?php echo $conf->getId() ?>" title="<?php echo $conf->getName() ?> Info">Info</a></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

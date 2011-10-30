@@ -9,7 +9,10 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
-require_once 'mink/autoload.php';
+// Uncomment if using behat.phar
+ require_once __DIR__ . '/../../../../lib/Vendor/mink.phar'; 
+
+//require_once 'mink/autoload.php';
 
 class UIContext extends Behat\Mink\Behat\Context\MinkContext
 {
@@ -18,7 +21,7 @@ class UIContext extends Behat\Mink\Behat\Context\MinkContext
                           );
     
     protected $elementList = array(
-                            "conferences table" => '.conferences'
+                            "conferences table" => '.conferences',
                           );
     
     /**
@@ -49,7 +52,7 @@ class UIContext extends Behat\Mink\Behat\Context\MinkContext
     }
     
     /**
-     * @Given /^I wait for the suggestion box to appear$/
+     * @When /^I wait for the suggestion box to appear$/
      */
     public function iWaitForTheSuggestionBoxToAppear()
     {
@@ -58,5 +61,6 @@ class UIContext extends Behat\Mink\Behat\Context\MinkContext
         );
     }
 
+   
 
 }

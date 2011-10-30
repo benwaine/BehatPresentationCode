@@ -52,7 +52,6 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        $this->useContext('subcontext_alias', new UIContext($parameters));
         
         $path = __DIR__ . '/' . $parameters['database']['dbPath'];
         
@@ -65,12 +64,27 @@ class FeatureContext extends BehatContext
 
         $con = \Doctrine\DBAL\DriverManager::getConnection($params);
 
+        // Used for all the UI testing steps.
+        $this->useContext('UIContext', new UIContext($parameters));
+        
+        // Used for Phabric set up and Phabric steps.
+        $this->useContext('PhabricContext', new PhabricContext($parameters, $con));
+        
+        // Some service classes under test in this feature file.
         $confMapper = new \PHPCon\Conference\Mapper($con);
         $confService = new \PHPCon\Conference\Service($confMapper);
+        
+        $this->conferenceService = $confService;
 
+        // Section One - Answer Set Up
+        $sessionMapper  = new \PHPCon\Session\Mapper($con);
+        $sessionService = new \PHPCon\Session\Service($sessionMapper);
+        
+        $this->sessionService = $sessionService;
+        
         self::$db = $con;
         self::$dataDir = __DIR__ . '/' . $parameters['database']['dataPath'];
-        $this->service = $confService;
+
     }
 
     /**
@@ -106,7 +120,7 @@ class FeatureContext extends BehatContext
      */
     public function iUseTheFindConferencesMethod()
     {
-        $this->result = $this->service->findConferences();
+        $this->result = $this->conferenceService->findConferences();
         
     }
 
@@ -148,4 +162,5 @@ class FeatureContext extends BehatContext
         }
     }
 
+    
 }

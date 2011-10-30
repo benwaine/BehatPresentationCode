@@ -8,13 +8,13 @@ $queries[] = 'CREATE TABLE conference (
                 id INTEGER PRIMARY KEY,
                 name TEXT,
                 description TEXT,
-                date DATE)';
+                cdate DATE)';
 
 $queries[] = 'CREATE TABLE session (
                 id INTEGER PRIMARY KEY,
                 name TEXT,
                 speaker TEXT,
-                time DATE,
+                stime DATE,
                 conference_id INTEGER)';
 
 foreach($queries as $q)

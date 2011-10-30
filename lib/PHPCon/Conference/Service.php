@@ -11,14 +11,14 @@ class Service
         $this->mapper = $mapper;
     }
     
-    public function create()
-    {
-        
-    }
-    
     public function findConferences()
     {
         return $this->mapper->fetchAll();
+    }
+    
+    public function findConference($id)
+    {
+        return $this->mapper->find($id);
     }
     
     
