@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 require_once 'Vendor/doctrine2-dbal/lib/vendor/doctrine-common/lib/Doctrine/Common/ClassLoader.php';
 
 $dLoader = new \Doctrine\Common\ClassLoader('Doctrine\DBAL', __DIR__ . '/Vendor/doctrine2-dbal/lib');
@@ -26,5 +27,7 @@ $con = \Doctrine\DBAL\DriverManager::getConnection($params);
 $confMapper  = new \PHPCon\Conference\Mapper($con);
 $confService = new \PHPCon\Conference\Service($confMapper);
 
+$sessionMapper = new \PHPCon\Session\Mapper($con);
+$sessionService = new \PHPCon\Session\Service($sessionMapper);
 
 

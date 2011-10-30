@@ -12,13 +12,6 @@ class Conference
     
     protected $date;
 
-    public function __construct($name, $description, $date) 
-    {
-        $this->name = $name;
-        $this->description = $description;
-        $this->date = $date;
-    }
-
     public function getId() 
     {
         return $this->id;

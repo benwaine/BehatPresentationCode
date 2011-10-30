@@ -1,0 +1,49 @@
+default:
+  context:
+    class: 'FeatureContext'
+    parameters:
+      base_url: http://behatdemo.dev/
+      database:
+        username: 'root'
+        password: 'root'
+        dbname:   'behat-demo'
+        driver:   'pdo_sqlite'
+        dbPath: '../../../../data/data.db'
+        dataPath: '../../../../data/'
+      Phabric:
+        entities:
+          conference:
+            tableName: 'conference'
+            primaryKey: 'id'
+            nameCol: 'name'
+#phdemo2 - Uncomment before running tag phdemo2
+            nameTransformations:
+              Conf Name: name
+              Conf Description: description
+              Conf Date: cdate
+#
+##phdemo3 - Uncomment before running tag phdemo3
+            dataTransformations:
+              cdate: UKTOMYSQLDATE
+#              
+##phdemo4 - Uncomment before running tag phdemo4
+            defaults: 
+              description: default description
+#phdemo5 - Relational data uses this config for the session entity.              
+          session: 
+            tableName: 'session'
+            primaryKey: 'id'
+            nameCol: 'name'
+            nameTransformations:
+              Session Name: name
+              Speaker Name: speaker
+              Time: stime
+              Conf Name: conference_id
+            dataTransformations:
+              stime: UKTOMYSQLDATE
+              conference_id: CONFLOOKUP
+        
+
+
+            
+          

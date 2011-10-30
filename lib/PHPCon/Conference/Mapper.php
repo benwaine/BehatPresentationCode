@@ -7,6 +7,11 @@ use PHPCon\Conference\Conference as Conf;
 class Mapper
 {
 
+    /**
+     * DB Connection
+     * 
+     * @var \Doctrine\DBAL\Connection  
+     */
     protected $connection;
 
     public function __construct($connection)
@@ -24,6 +29,16 @@ class Mapper
         
         return $confObs;
     }
+    
+    public function find($id)
+    {
+        
+        $sql = "SELECT * FROM conference where id = ?";
+        
+        $conference = $this->connection->fetchAssoc($sql, array($id));
+        
+        return $this->handleResult($conference);
+    }
 
     protected function handleResult($result)
     {
@@ -32,7 +47,7 @@ class Mapper
         $confOb->setName($result['name']);
         $confOb->setDescription($result['description']);
 
-        $date = \DateTime::createFromFormat('Y-m-d H:i:s', $result['date']);
+        $date = \DateTime::createFromFormat('Y-m-d H:i:s', $result['cdate']);
 
         if ($date)
         {

@@ -11,14 +11,7 @@ class Session
     protected $speaker;
     
     protected $time;
-    
-    public function __construct($id, $name, $speaker, $time) 
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->speaker = $speaker;
-        $this->time = $time;
-    }
+
 
     public function getId() 
     {
